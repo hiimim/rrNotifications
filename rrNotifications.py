@@ -68,7 +68,7 @@ def rrNotify():
 	'''
 
 	# Initialize Telegram bot
-	bot = telepot.Bot('telegramToken')
+	bot = telepot.Bot(telegramToken)
 
 	# Get environmental variables
 	radarr_isupgrade = False
