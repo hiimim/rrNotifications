@@ -24,5 +24,6 @@ telegramChatId = 00000
 ### Make the file executable (Linux only)
 ```sudo chmod +x rrNotifications.py```
 ### Add the script to Radarr
-Scripts are added to Radarr via *System* > *Connect* > *Add* > *Custom Script*. Fill in *Name* and *Path* only.
+Scripts are added to Radarr via *System* > *Connect* > *Add* > *Custom Script*.
+Fill in *Name* and *Path* only.
 ## Licence
