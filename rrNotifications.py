@@ -71,16 +71,16 @@ def rrNotify():
 	bot = telepot.Bot(telegramToken)
 
 	# Get environmental variables
-	radarr_isupgrade = False
+	radarr_isupgrade = 'False'
 	if 'radarr_eventtype' in os.environ:
 		radarr_eventtype = os.environ.get('radarr_eventtype')
 		if radarr_eventtype == 'Download':
 			radarr_isupgrade = os.environ.get('radarr_isupgrade')
 		radarr_movie_title = os.environ.get('radarr_movie_title')
 		radarr_movie_imdbid = os.environ.get('radarr_movie_imdbid')
-	
+
 	# Send notification
-	if radarr_eventtype == 'Download' and radarr_isupgrade == False:
+	if (radarr_eventtype == 'Download') and (radarr_isupgrade == 'False'):
 		movie = rrSearchMovie(radarr_movie_imdbid, 'imdb')
 		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
 		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!'
