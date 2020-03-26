@@ -12,7 +12,9 @@ telegramToken = 'xxxxx'
 telegramChatId = 00000
 
 
-import os, json, telepot
+import os
+import json
+import telepot
 # Python 2.7 and 3 compatiblity
 try:
 	from urllib.request import urlopen
