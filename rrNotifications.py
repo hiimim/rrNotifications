@@ -76,7 +76,8 @@ def rrNotify():
 			radarr_isupgrade = os.environ.get('radarr_isupgrade')
 		radarr_movie_title = os.environ.get('radarr_movie_title')
 		radarr_movie_imdbid = os.environ.get('radarr_movie_imdbid')
-
+	
+	# Send notification
 	if radarr_eventtype == 'Download' and radarr_isupgrade == False:
 		movie = rrSearchMovie(radarr_movie_imdbid, 'imdb')
 		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
