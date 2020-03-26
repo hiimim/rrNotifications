@@ -12,10 +12,18 @@ telegramToken = 'xxxxx'
 telegramChatId = 00000
 
 
+import os, json, telepot
+# Python 2.7 and 3 compatiblity
+try:
+	from urllib.request import urlopen
+except ImportError:
+	from urllib2 import urlopen
+
+
 def rrSearchMovie(search, arg):
 
 	'''
-	Search for a Movie
+	Search for a movie
 	
 	:param str search: The movie name or IMDB Id or TMDB Id
 	:param str arg: The type of search according to previous
@@ -49,3 +57,31 @@ def rrSearchMovie(search, arg):
 		data = sorted(data, key=lambda m: (-m['year'], m['title']))
 
 	return data
+
+
+def rrNotify():
+
+	'''
+	Send notifications on Telegram
+	'''
+
+	# Initialize Telegram bot
+	bot = telepot.Bot('telegramToken')
+
+	# Get environmental variables
+	radarr_isupgrade = False
+	if 'radarr_eventtype' in os.environ:
+		radarr_eventtype = os.environ.get('radarr_eventtype')
+		if radarr_eventtype == 'Download':
+			radarr_isupgrade = os.environ.get('radarr_isupgrade')
+		radarr_movie_title = os.environ.get('radarr_movie_title')
+		radarr_movie_imdbid = os.environ.get('radarr_movie_imdbid')
+
+	if radarr_eventtype == 'Download' and radarr_isupgrade == False:
+		movie = rrSearchMovie(radarr_movie_imdbid, 'imdb')
+		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
+		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!'
+		bot.sendPhoto(chat_id=telegramChatId, photo=movie['images'][0]['url'], caption=msg, parse_mode='html')
+		
+
+rrNotify()
