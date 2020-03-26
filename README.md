@@ -1,9 +1,6 @@
 # rrNotifications
-
-A python script to received nice Radarr notifications.
-
+A python script to receive nice [Radarr](https://github.com/Radarr/Radarr) notifications.
 ## Features
-
 ## Configuration
 ### Requirements
 * Python 2.7 or higher
