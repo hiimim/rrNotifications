@@ -1,7 +1,7 @@
 # rrNotifications
 A python script to receive nice [Radarr](https://github.com/Radarr/Radarr) notifications.
 
-[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) ![made-with-love](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![made-with-love](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red)](https://shields.io/)
 ## Features
 ## Configuration
 ### Requirements
