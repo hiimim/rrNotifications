@@ -7,8 +7,8 @@ A python script to receive nice [Radarr](https://github.com/Radarr/Radarr) notif
 * Python libraries: *urllib* (or *urllib2*), *json*, *telepot*
 ### Telegram bot: get token and chat Id
 To use the Telegram Bot API, you will first have to create a bot account by chatting with [BotFather](https://core.telegram.org/bots#6-botfather) then get a unique authentication token. The token is a string which looks like ```110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw```.
-To get the chat Id, start a chat with your newly created bot by sending a message then access ```https://api.telegram.org/bot<token>/getUpdates```. The chat Id is available in the response ```,"chat":{"id":```.
-### Edit the file
+To get the chat Id, start a chat with your newly created bot by sending a message then access ```https://api.telegram.org/bot<token>/getUpdates```. The chat Id is available in the response ```"chat":{"id":```.
+### Add credentials to the script
 Edit the file and enter your Radarr and Telegram information.
 ```
 # Configuration: Radarr
