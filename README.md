@@ -27,3 +27,9 @@ telegramChatId = 00000
 Scripts are added to Radarr via *System* > *Connect* > *Add* > *Custom Script*.
 Fill in *Name* and *Path* only.
 ## Licence
+
+
+## TODO
+* Add synopsis
+* Add trailer button
+* Fixed posters size
