@@ -29,7 +29,7 @@ Fill in *Name* and *Path* only.
 ## Licence
 
 
-## TODO
+## Todo
 * Add synopsis
 * Add trailer button
 * Fixed posters size
