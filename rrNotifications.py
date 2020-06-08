@@ -61,6 +61,44 @@ def rrSearchMovie(search, arg):
 	return data
 
 
+def excerpt(text, limit):
+
+	'''
+	Collapse and truncate the given text to fit in the given width limit
+
+	:param str text: The text
+	:param int arg: Width limit - number of characters
+	:return: truncated text
+	:rtype: str
+	'''
+
+	text = text.replace('  ', ' ')
+
+	# Adapt limit to include additional characters
+	limit = limit - 6
+
+	if len(text) > limit:
+		# Cut
+		text_excerpt = text[:limit]
+		# If the cut occured in the middle of a word a number
+		if text[limit-1].isalnum() and text[limit].isalnum():
+			# Find latest punctuation and cut
+			text_excerpt = text_excerpt[:max(text_excerpt.rfind(' '), \
+				text_excerpt.rfind(','), text_excerpt.rfind(';'), \
+				text_excerpt.rfind('.'), text_excerpt.rfind(':'), \
+				text_excerpt.rfind('!'), text_excerpt.rfind('?'))]
+		# Add space if excerpt does not end with space
+		if text[limit-1] != ' ':
+			text_excerpt += ' '
+		# Add symbol
+		text_excerpt += '[...]'
+
+	else:
+		text_excerpt = text
+
+	return text_excerpt
+
+
 def rrNotify():
 
 	'''
