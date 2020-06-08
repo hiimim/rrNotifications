@@ -61,13 +61,13 @@ def rrSearchMovie(search, arg):
 	return data
 
 
-def excerpt(text, limit):
+def excerpt(text, limit=250):
 
 	'''
 	Collapse and truncate the given text to fit in the given width limit
 
 	:param str text: The text
-	:param int arg: Width limit - number of characters
+	:param int arg: Width limit - Default number of characters is 250
 	:return: truncated text
 	:rtype: str
 	'''
@@ -121,7 +121,7 @@ def rrNotify():
 	if (radarr_eventtype == 'Download') and (radarr_isupgrade == 'False'):
 		movie = rrSearchMovie(radarr_movie_imdbid, 'imdb')
 		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
-		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!\n' + excerpt(movie['overview'], 250)
+		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!\n' + excerpt(movie['overview'])
 		bot.sendPhoto(chat_id=telegramChatId, photo=movie['images'][0]['url'], caption=msg, parse_mode='html')
 		
 
