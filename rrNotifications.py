@@ -121,7 +121,7 @@ def rrNotify():
 	if (radarr_eventtype == 'Download') and (radarr_isupgrade == 'False'):
 		movie = rrSearchMovie(radarr_movie_imdbid, 'imdb')
 		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
-		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!\n' + excerpt(movie['overview'])
+		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!\n' + excerpt(movie['overview'], 250)
 		bot.sendPhoto(chat_id=telegramChatId, photo=movie['images'][0]['url'], caption=msg, parse_mode='html')
 		
 
