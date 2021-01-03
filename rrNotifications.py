@@ -15,6 +15,7 @@ telegramChatId = 00000
 import os
 import json
 import telepot
+from telepot.namedtuple import InlineKeyboardButton, InlineKeyboardMarkup
 # Python 2.7 and 3 compatiblity
 try:
 	from urllib.request import urlopen
