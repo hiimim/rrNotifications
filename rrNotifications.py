@@ -124,19 +124,19 @@ def rrNotify():
 		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
 		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!\n' + excerpt(movie['overview'])
 		
-		# YouTube trailer
+		# Get YouTube trailer
 		if 'youTubeTrailerId' in movie:
 			movieTrailerURL = 'https://www.youtube.com/watch?v=' + movie['youTubeTrailerId']
 		else:
 			movieTrailerURL = 'https://www.youtube.com/results?search_query=trailer+' + movie['title'].replace(" ", "+") + '+' + str(movie['year'])
 
-		# IMDB page
+		# Get IMDb page
 		if 'imdbId' in movie:
 			movieImdbURL = 'https://www.imdb.com/title/' + movie['imdbId']
 		else:
 			movieImdbURL = 'https://www.imdb.com/find?q=' + movie['title'].replace(" ", "+") + '+' + str(movie['year'])
 
-		# # TMDB page
+		# # Get TMDb page
 		# if 'tmdbId' in movie:
 		# 	movieImdbURL = 'https://www.themoviedb.org/movie/' + movie['tmdbId']
 		# else:
@@ -151,7 +151,7 @@ def rrNotify():
 		keyboard = [keyboard]
 		reply_markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
 		
-		bot.sendPhoto(chat_id=telegramChatId, photo=movie['images'][0]['url'], caption=msg, parse_mode='html')
+		bot.sendPhoto(chat_id=telegramChatId, photo=movie['images'][0]['url'], caption=msg, parse_mode='html', reply_markup=reply_markup)
 		
 
 rrNotify()
