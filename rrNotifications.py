@@ -123,6 +123,34 @@ def rrNotify():
 		movie = rrSearchMovie(radarr_movie_imdbid, 'imdb')
 		movie = rrSearchMovie(movie['tmdbId'], 'tmdb')
 		msg = '<b>' + movie['title'] + '</b> (' + str(movie['year']) + ') downloaded!\n' + excerpt(movie['overview'])
+		
+		# YouTube trailer
+		if 'youTubeTrailerId' in movie:
+			movieTrailerURL = 'https://www.youtube.com/watch?v=' + movie['youTubeTrailerId']
+		else:
+			movieTrailerURL = 'https://www.youtube.com/results?search_query=trailer+' + movie['title'].replace(" ", "+") + '+' + str(movie['year'])
+
+		# IMDB page
+		if 'imdbId' in movie:
+			movieImdbURL = 'https://www.imdb.com/title/' + movie['imdbId']
+		else:
+			movieImdbURL = 'https://www.imdb.com/find?q=' + movie['title'].replace(" ", "+") + '+' + str(movie['year'])
+
+		# # TMDB page
+		# if 'tmdbId' in movie:
+		# 	movieImdbURL = 'https://www.themoviedb.org/movie/' + movie['tmdbId']
+		# else:
+		# 	movieImdbURL = 'https://www.themoviedb.org/search?query=' + movie['title'].replace(" ", "+") + '+' + str(movie['year'])
+
+		# Inline Keyboard Buttons
+		kTrailerButton  = InlineKeyboardButton(text='Trailer', url=movieTrailerURL)
+		kTrailerButton = [kTrailerButton]
+		keyboard = kTrailerButton
+		kImdbButton  = InlineKeyboardButton(text='IMDB', url=movieImdbURL)
+		keyboard.append(kImdbButton)
+		keyboard = [keyboard]
+		reply_markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
+		
 		bot.sendPhoto(chat_id=telegramChatId, photo=movie['images'][0]['url'], caption=msg, parse_mode='html')
 		
 
