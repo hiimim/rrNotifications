@@ -31,5 +31,5 @@ Fill in *Name* and *Path* only.
 
 ## Todo
 * ~~Add synopsis~~
-* Add trailer button
+* ~~Add trailer button~~
 * Fixed posters size
